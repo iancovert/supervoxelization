@@ -1,0 +1,600 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=mex 2016.5.22)  28 DEC 2016 17:01
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**eig3volume.c
+(./eig3volume.c
+This is MeX  Version 1.05  18 XII 1993  (B. Jackowski & M. Ry\'cko)
+! You can't use `macro parameter character #' in vertical mode.
+l.1 #
+     include "mex.h"
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.2 #
+     include "math.h"
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.3 #
+     ifdef MAX
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.4 #
+     undef MAX
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.5 #
+     endif
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.6 #
+     define MAX(a, b) ((a)>(b)?(a):(b))
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.7 #
+     define n 3
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.19 _
+      _inline double absd(double val){ if(val>0){ return val;} else { return...
+
+? 
+! Missing { inserted.
+<to be read again> 
+                   _
+l.19 __
+       inline double absd(double val){ if(val>0){ return val;} else { return...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.20 
+     
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+<to be read again> 
+                   $
+<to be read again> 
+                   \par 
+l.20 
+     
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.207 void eigen_
+                 decomposition(double A[n][n], double V[n][n], double d[n]) {
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.220 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+<to be read again> 
+                   $
+<to be read again> 
+                   \par 
+l.220 
+      
+? 
+
+Overfull \hbox (470.6663pt too wide) in paragraph at lines 207--220
+[]\tenrm void eigen$[]\teni ecomposition\tenrm (\teni doubleA\tenrm [\teni n\te
+nrm ][\teni n\tenrm ]\teni ; doubleV\tenrm [\teni n\tenrm ][\teni n\tenrm ]\ten
+i ; doubled\tenrm [\teni n\tenrm ])[]$ |
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm v
+.\kern-0.27779
+.\tenrm o
+.\tenrm i
+.etc.
+
+! Misplaced alignment tab character &.
+l.223     if((da[0]>=da[1])&
+                            &(da[0]>da[2]))
+? 
+! Misplaced alignment tab character &.
+l.223     if((da[0]>=da[1])&&
+                             (da[0]>da[2]))
+? 
+! Misplaced alignment tab character &.
+l.229     else if((da[1]>=da[0])&
+                                 &(da[1]>da[2]))
+? 
+! Misplaced alignment tab character &.
+l.229     else if((da[1]>=da[0])&&
+                                  (da[1]>da[2]))
+? 
+
+Overfull \hbox (25.63492pt too wide) in paragraph at lines 221--241
+[]\tenrm /* Sort the eigen va-lues and vec-tors by abs eigen va-lue */ da[0]=ab
+sd(d[0]); da[1]=absd(d[1]); da[2]=absd(d[2]);|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm /
+.\tenrm *
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\tenrm S
+.etc.
+
+[1]
+! Too many }'s.
+l.243 }
+       
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.250     float *Dxx_
+                     f, *Dxy_f, *Dxz_f, *Dyy_f, *Dyz_f, *Dzz_f;
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.252 
+      
+? 
+
+Overfull \hbox (43.23912pt too wide) in paragraph at lines 250--252
+[]\tenrm float *Dxx$[]\teni ; \tensy ^^C\teni Dxy[]; \tensy ^^C\teni Dxz[]; \te
+nsy ^^C\teni Dyy[]; \tensy ^^C\teni Dyz[]; \tensy ^^C\teni Dzz[]\tenrm ; \teni 
+float \tensy ^^C \teni Dvecx[]; \tensy ^^C\teni Dvecy[]; \tensy ^^C\teni Dvecz[
+]; \tensy ^^C\teni Deiga[]; \tensy ^^C\teni Deigb[]; \tensy ^^C\teni Deigc[]\te
+nrm ;$ |
+
+\hbox(7.5+2.86108)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm ^^M (ligature fl)
+.\tenrm o
+.\tenrm a
+.\tenrm t
+.etc.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.253     mwSize output_
+                        dims[2]={1, 3};
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.257 
+      
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.282     if(mxGetClassID(prhs[0])==mxDOUBLE_
+                                             CLASS) {
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.290 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+<to be read again> 
+                   $
+<to be read again> 
+                   \par 
+l.290 
+      
+? 
+
+Overfull \hbox (879.92288pt too wide) in paragraph at lines 282--290
+[]\tenrm if(mxGetClassID(prhs[0])==mxDOUBLE$[]\teni LASS\tenrm )[]$ |
+
+\hbox(7.5+2.5)x469.75499
+.\hbox(0.0+0.0)x20.0
+.\tenrm i
+.\tenrm f
+.\tenrm (
+.\tenrm m
+.etc.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.292 ...reateNumericArray(nsubs, idims, mxDOUBLE_
+                                                  CLASS, mxREAL);
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.303 
+      
+? 
+
+Overfull \hbox (104.701pt too wide) in paragraph at lines 291--303
+[]\tenrm /* As-sign po-in-ters to each out-put. */ plhs[0] = mxCre-ate-Nu-me-ri
+-cAr-ray(nsubs, idims, mxDOUBLE$[]\teni LASS; mxREAL\tenrm ); \teni plhs\tenrm 
+[1] =|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm /
+.\tenrm *
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\tenrm A
+.etc.
+
+
+Overfull \hbox (270.0533pt too wide) in paragraph at lines 291--303
+\teni mxCreateNumericArray\tenrm (\teni nsubs; idims; mxDOUBLE[]LASS; mxREAL\te
+nrm ); \teni plhs\tenrm [2] = \teni mxCreateNumericArray\tenrm (\teni nsubs; id
+ims; mxDOUBLE[]LASS; mxREAL\tenrm ); \teni Deiga \tenrm =|
+
+\hbox(7.5+2.5)x469.75499
+.\teni m
+.\teni x
+.\teni C
+.\kern0.71527
+.\teni r
+.etc.
+
+
+Overfull \hbox (1601.84407pt too wide) in paragraph at lines 291--303
+\teni mxGetPr\tenrm (\teni plhs\tenrm [0]); \teni Deigb \tenrm = \teni mxGetPr\
+tenrm (\teni plhs\tenrm [1]); \teni Deigc \tenrm = \teni mxGetPr\tenrm (\teni p
+lhs\tenrm [2]); \teni if\tenrm (\teni nlhs \tenrm == 6)[]$ |
+
+\hbox(7.5+2.5)x469.75499
+.\teni m
+.\teni x
+.\teni G
+.\teni e
+.\teni t
+.etc.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.309             eigen_
+                        decomposition(Ma, Davec, Daeig);
+? 
+! Extra }, or forgotten $.
+l.317         }
+               
+? 
+! Extra }, or forgotten $.
+l.318     }
+           
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.327 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+<to be read again> 
+                   $
+<to be read again> 
+                   \par 
+l.327 
+      
+? 
+
+Overfull \hbox (24.0796pt too wide) in paragraph at lines 305--327
+[]\tenrm for(i=0; i<npixels; i++)  Ma[0][0]=Dxx[i]; Ma[0][1]=Dxy[i]; Ma[0][2]=D
+xz[i]; Ma[1][0]=Dxy[i]; Ma[1][1]=Dyy[i];|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm f
+.\tenrm o
+.\tenrm r
+.\tenrm (
+.etc.
+
+
+Overfull \hbox (48.74849pt too wide) in paragraph at lines 305--327
+\tenrm Ma[1][2]=Dyz[i]; Ma[2][0]=Dxz[i]; Ma[2][1]=Dyz[i]; Ma[2][2]=Dzz[i]; eige
+n$[]\teni ecomposition\tenrm (\teni Ma; Davec; Daeig\tenrm ); \teni Deiga\tenrm
+ [\teni i\tenrm ] =|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm M
+.\tenrm a
+.\tenrm [
+.\tenrm 1
+.\tenrm ]
+.etc.
+
+
+Overfull \hbox (476.07556pt too wide) in paragraph at lines 305--327
+\teni Daeig\tenrm [0]; \teni Deigb\tenrm [\teni i\tenrm ] = \teni Daeig\tenrm [
+1]; \teni Deigc\tenrm [\teni i\tenrm ] = \teni Daeig\tenrm [2]; \teni if\tenrm 
+(\teni nlhs \tenrm == 6)[]\teni elseif\tenrm (\teni mxGetClassID\tenrm (\teni p
+rhs\tenrm [0]) ==|
+
+\hbox(7.5+2.5)x469.75499
+.\teni D
+.\kern0.27779
+.\teni a
+.\teni e
+.\teni i
+.etc.
+
+
+Overfull \hbox (733.32002pt too wide) in paragraph at lines 305--327
+\teni mxSINGLE[]LASS\tenrm )[]$ |
+
+\hbox(7.5+2.86108)x469.75499
+.\teni m
+.\teni x
+.\teni S
+.\kern0.57637
+.\teni I
+.etc.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.329 ...reateNumericArray(nsubs, idims, mxSINGLE_
+                                                  CLASS, mxREAL);
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.344 
+      
+? 
+
+Overfull \hbox (99.21486pt too wide) in paragraph at lines 328--344
+[]\tenrm /* As-sign po-in-ters to each out-put. */ plhs[0] = mxCre-ate-Nu-me-ri
+-cAr-ray(nsubs, idims, mxSINGLE$[]\teni LASS; mxREAL\tenrm ); \teni plhs\tenrm 
+[1] =|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm /
+.\tenrm *
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\tenrm A
+.etc.
+
+
+Overfull \hbox (268.05534pt too wide) in paragraph at lines 328--344
+\teni mxCreateNumericArray\tenrm (\teni nsubs; idims; mxSINGLE[]LASS; mxREAL\te
+nrm ); \teni plhs\tenrm [2] = \teni mxCreateNumericArray\tenrm (\teni nsubs; id
+ims; mxSINGLE[]LASS; mxREAL\tenrm ); \teni Deiga[] \tenrm =|
+
+\hbox(7.5+2.86108)x469.75499
+.\teni m
+.\teni x
+.\teni C
+.\kern0.71527
+.\teni r
+.etc.
+
+
+Overfull \hbox (31.75584pt too wide) in paragraph at lines 328--344
+\tenrm (\teni float\tensy ^^C\tenrm )\teni mxGetPr\tenrm (\teni plhs\tenrm [0])
+; \teni Deigb[] \tenrm = (\teni float\tensy ^^C\tenrm )\teni mxGetPr\tenrm (\te
+ni plhs\tenrm [1]); \teni Deigc[] \tenrm = (\teni float\tensy ^^C\tenrm )\teni 
+mxGetPr\tenrm (\teni plhs\tenrm [2]); \teni if\tenrm (\teni nlhs \tenrm ==|
+
+\hbox(7.5+2.86108)x469.75499
+.\tenrm (
+.\teni f
+.\kern1.0764
+.\teni l
+.\kern0.19678
+.etc.
+
+
+Overfull \hbox (1335.77771pt too wide) in paragraph at lines 328--344
+\tenrm 6)[]$ |
+
+\hbox(7.5+2.86108)x469.75499
+.\tenrm 6
+.\tenrm )
+.\hbox(7.5+2.86108)x1796.64378
+..\teni =
+..\glue(\medmuskip) 2.22217 plus 1.11108 minus 2.22217
+..\tensy ^^C
+..\glue(\medmuskip) 2.22217 plus 1.11108 minus 2.22217
+..\teni M
+..etc.
+.\mathoff
+.\penalty 10000
+.etc.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.347             Ma[0][0]=(double)Dxx_
+                                       f[i]; Ma[0][1]=(double)Dxy_f[i]; Ma[0...
+
+? 
+! Extra }, or forgotten $.
+l.360         }
+               
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.361 
+      
+? 
+
+Overfull \hbox (66.2738pt too wide) in paragraph at lines 346--361
+[]\tenrm for(i=0; i<npixels; i++)  Ma[0][0]=(double)Dxx$[][\teni i\tenrm ]; \te
+ni Ma\tenrm [0][1] = (\teni double\tenrm )\teni Dxy[]\tenrm [\teni i\tenrm ]; \
+teni Ma\tenrm [0][2] = (\teni double\tenrm )\teni Dxz[]\tenrm [\teni i\tenrm ];
+ \teni Ma\tenrm [1][0] =|
+
+\hbox(7.5+2.86108)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm f
+.\tenrm o
+.\tenrm r
+.\tenrm (
+.etc.
+
+
+Overfull \hbox (22.09187pt too wide) in paragraph at lines 346--361
+\tenrm (\teni double\tenrm )\teni Dxy[]\tenrm [\teni i\tenrm ]; \teni Ma\tenrm 
+[1][1] = (\teni double\tenrm )\teni Dyy[]\tenrm [\teni i\tenrm ]; \teni Ma\tenr
+m [1][2] = (\teni double\tenrm )\teni Dyz[]\tenrm [\teni i\tenrm ]; \teni Ma\te
+nrm [2][0] = (\teni double\tenrm )\teni Dxz[]\tenrm [\teni i\tenrm ]; \teni Ma\
+tenrm [2][1] =|
+
+\hbox(7.5+2.86108)x469.75499
+.\tenrm (
+.\teni d
+.\teni o
+.\teni u
+.\teni b
+.etc.
+
+
+Overfull \hbox (83.68849pt too wide) in paragraph at lines 346--361
+\tenrm (\teni double\tenrm )\teni Dyz[]\tenrm [\teni i\tenrm ]; \teni Ma\tenrm 
+[2][2] = (\teni double\tenrm )\teni Dzz[]\tenrm [\teni i\tenrm ]; \teni eigen[]
+ecomposition\tenrm (\teni Ma; Davec; Daeig\tenrm ); \teni Deiga[]\tenrm [\teni 
+i\tenrm ] = (\teni float\tenrm )\teni Daeig\tenrm [0]; \teni Deigb[]\tenrm [\te
+ni i\tenrm ] =|
+
+\hbox(7.5+2.86108)x469.75499
+.\tenrm (
+.\teni d
+.\teni o
+.\teni u
+.\teni b
+.etc.
+
+
+Overfull \hbox (401.41255pt too wide) in paragraph at lines 346--361
+\tenrm (\teni float\tenrm )\teni Daeig\tenrm [1]; \teni Deigc[]\tenrm [\teni i\
+tenrm ] = (\teni float\tenrm )\teni Daeig\tenrm [2]; \teni if\tenrm (\teni nlhs
+ \tenrm == 6)[]$ |
+
+\hbox(7.5+2.86108)x469.75499
+.\tenrm (
+.\teni f
+.\kern1.0764
+.\teni l
+.\kern0.19678
+.etc.
+
+)
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*end
+
+*\end
+[2]
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 246 ({)
+### bottom level
+Output written on eig3volume.dvi (2 pages, 13932 bytes).
