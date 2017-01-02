@@ -13,6 +13,8 @@ x_target = x - 2 * border;
 y_target = y - 2 * border;
 z_target = z - 2 * border;
 
+% Note: only want frames where we can get sequences of >= 3 
+
 % No frames to add at the head (t = 1)
 
 % Add frames in the middle (in between bad frames)
@@ -30,7 +32,7 @@ end
 
 % Add frames at the tail (t = 1500)
 t_diff = size(data4d, 4) - bad_frame_indices(end);
-if (t_diff > 3)
+if (t_diff >= 3)
 	subsequence_num = numel(var) + 1;
 	t = bar_frame_indices(end);
 	var{subsequence_num} = zeros(x_target, y_target, z_target, t_diff);
