@@ -1,6 +1,6 @@
 function projection = project_tight(frame, border)
   if (nargin < 2)
-    border = false
+    border = false;
   end
 
   % Create projections
