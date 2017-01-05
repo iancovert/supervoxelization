@@ -1,11 +1,11 @@
-function denoise_filter_merge(var, collab_f_param, frangi_options, chunks, ind, lock_name_base, output)
+function denoise_filter_merge(var, collab_f_param, frangi_options, segments, ind, lock_name_base, output)
 	% Calculate indices of frames in this batch
 	total = 0;
 	for ii = 1:numel(var)
 		total = total + size(var{ii}, 4);
 	end
-	start_ind = floor((ind - 1) * total / chunks) + 1;
-	finish_ind = floor(ind * total / chunks);
+	start_ind = floor((ind - 1) * total / segments) + 1;
+	finish_ind = floor(ind * total / segments);
 
 	% Create vectors to hold cell indices and indices (within miniature movies of each frame)
 	cell_indices = [];
