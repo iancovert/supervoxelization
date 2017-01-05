@@ -12,5 +12,5 @@ function avg = cell_movie_average(var)
 
 	% Increment average with each component
 	for ii = 1:numel(sum_array)
-		avg = avg + sum_array{ii} * (size(var{ii}, 4) / total_frames);
+		avg = avg + sum_array{ii} / total_frames;
 	end
