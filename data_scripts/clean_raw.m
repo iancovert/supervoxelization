@@ -34,7 +34,7 @@ end
 t_diff = size(data4d, 4) - bad_frame_indices(end);
 if (t_diff >= 3)
 	subsequence_num = numel(var) + 1;
-	t = bar_frame_indices(end);
+	t = bad_frame_indices(end);
 	var{subsequence_num} = zeros(x_target, y_target, z_target, t_diff);
 	for ii = (t + 1):size(data4d, 4)
 		var{subsequence_num}(:,:,:,ii - t) = data4d((border + 1):(x - border), (border + 1):(y - border), (border + 1):(z - border),ii);
