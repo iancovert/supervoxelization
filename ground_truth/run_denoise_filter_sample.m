@@ -1,17 +1,4 @@
-load('../data/frame_sample.mat');
-
-% Subtract average frame (where average is defined by this sample)
-nb = sample;
-
-addpath('../data_scripts');
-average = mean(sample, 4);
-
-for ii = 1:size(nb, 4)
-	nb(:,:,:,ii) = nb(:,:,:,ii) - average;
-end
-
-% Threshold negative voxels
-nb(nb(:) < 0) = 0;
+load('../data/frame_sample_weighted.mat');
 
 % Tuned through trial and error
 collab_f_param = 25;
@@ -25,6 +12,6 @@ frangi_options.FrangiBeta = 10;
 frangi_options.FrangiC = 100;
 
 % Apply processing
-processed = denoise_and_filter(nb, collab_f_param, frangi_options);
+processed = denoise_and_filter(weighted, collab_f_param, frangi_options);
 
 save('../data/processed_sample.mat','-v7.3');
