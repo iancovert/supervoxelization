@@ -13,10 +13,10 @@ function inds = sampling_indices(fg, kernel_size)
 	k = (kernel_size - 1) / 2;
 
 	% Ones
-	all_ones = find(var);
+	all_ones = find(fg);
 
 	% All zeros
-	all_zeros = find(~var)
+	all_zeros = find(~fg);
 
 	% Ones in dilated foreground
 	dilated_ones = find(dilated);
@@ -24,7 +24,7 @@ function inds = sampling_indices(fg, kernel_size)
 	% Find points in the valid region (usable by neural network)
 	all_points = 1:prod(size(fg));
 	[x y z t] = ind2sub(size(fg), all_points);
-	valid_inds = x > k & x <= (size(fg, 1) - k) & y > k & y <= (size(var, 2) - k) & z > k & z <= (size(var, 3) - k) & t > 1 & t < size(fg, 4);
+	valid_inds = x > k & x <= (size(fg, 1) - k) & y > k & y <= (size(fg, 2) - k) & z > k & z <= (size(fg, 3) - k) & t > 1 & t < size(fg, 4);
 	valid_points = all_points(valid_inds);
 
 	% Compute indices of ones, close zeros and far zeros
