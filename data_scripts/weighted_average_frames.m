@@ -1,15 +1,20 @@
 function copy = weighted_average_frames(var)
 	% Weights for weighted average
-	weights = [0.2 0.6 0.2];
+	weights = [0.0015 0.0072 0.0025 0.0072 -0.0359 -0.0580 -0.1482 -0.1612 0.7797 -0.1612 -0.1482 -0.0580 -0.0359 0.0072 0.0025 0.0072 0.0015];
+	n_weights = numel(weights);
 
-	% Create copy of frame stack
-	copy = var;
-
-	% Replace each frame with a weighted average
-	copy(:,:,:,1) = (var(:,:,:, 1) * weights(2) + var(:,:,:, 2) * weights(3)) / (weights(2) + weights(3));
-
-	for ii = 2:(size(copy, 4) - 1)
-		copy(:,:,:, ii) = var(:,:,:, ii - 1) * weights(1) + var(:,:,:, ii) * weights(2) + var(:,:,:, ii + 1) * weights(3);
+	% Ensure that frame stack is large enough
+	if (size(var, 4) < n_weights)
+		copy = [];
+		return
 	end
 
-	copy(:,:,:, size(var, 4)) = (var(:,:,:, size(var, 4) - 1) * weights(1) + var(:,:,:, size(var, 4)) * weights(2)) / (weights(1) + weights(2));
+	% Create new frame stack
+	copy = zeros(size(var, 1), size(var, 2), size(var, 3), size(var, 4) - n_weights + 1);
+
+	% Populate each layer of frame stack
+	for ii = ((n_weights - 1) / 2 + 1):(size(var, 4) - (n_weights - 1) / 2)
+		for jj = 1:n_weights
+			copy(:,:,:,ii - (n_weights - 1) / 2) = copy(:,:,:,ii - (n_weights - 1) / 2) + var(:,:,:,ii + jj - 1 - (n_weights - 1) / 2) .* weights(jj);
+		end
+	end
