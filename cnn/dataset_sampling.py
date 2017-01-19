@@ -78,27 +78,27 @@ class Dataset:
 		typeSelector = int(np.random.random() * 3)
 		if (typeSelector == 0):
 			# One
-			subset = self.training_subsets.ones
+			subset = self.training_subsets['ones']
 			inds = self.ones
 			Y = 1
 		elif (typeSelector == 1):
 			# Close zero
-			subset = self.training_subsets.close_zeros
+			subset = self.training_subsets['close_zeros']
 			inds = self.close_zeros
 			Y = 0
 		else:
 			# Far zero
-			subset = self.training_subsets.far_zeros
+			subset = self.training_subsets['far_zeros']
 			inds = self.far_zeros
 			Y = 0
 
 		# Fetch index of sampled point
 		indexSelector = np.random.randint(0, len(subset))
 		index = subset[indexSelector]
-		x = inds.x[index]
-		y = inds.y[index]
-		z = inds.z[index]
-		t = inds.t[index]
+		x = inds['x'][index]
+		y = inds['y'][index]
+		z = inds['z'][index]
+		t = inds['t'][index]
 		
 		# Fill tensors
 		batch_y[0, 0] = Y
@@ -129,27 +129,27 @@ class Dataset:
 			typeSelector = int(np.random.random() * 3)
 			if (typeSelector == 0):
 				# One
-				subset = self.training_subsets.ones
+				subset = subsets['ones']
 				inds = self.ones
 				Y = 1
 			elif (typeSelector == 1):
 				# Close zero
-				subset = self.training_subsets.close_zeros
+				subset = subsets['close_zeros']
 				inds = self.close_zeros
 				Y = 0
 			else:
 				# Far zero
-				subset = self.training_subsets.far_zeros
+				subset = subsets['far_zeros']
 				inds = self.far_zeros
 				Y = 0
 
 			# Fetch index of sampled point
 			indexSelector = np.random.randint(0, len(subset))
 			index = subset[indexSelector]
-			x = inds.x[index]
-			y = inds.y[index]
-			z = inds.z[index]
-			t = inds.t[index]
+			x = inds['x'][index]
+			y = inds['y'][index]
+			z = inds['z'][index]
+			t = inds['t'][index]
 			
 			# Fill tensors
 			batch_y[i, 0] = Y
