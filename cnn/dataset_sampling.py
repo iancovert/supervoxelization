@@ -58,7 +58,7 @@ class Dataset:
 		}
 
 		# Load movie
-		raw_file = htpy.File(raw_filename, 'r')
+		raw_file = h5py.File(raw_filename, 'r')
 		self.movie = raw_file['var']
 
 		# Kernel size
@@ -104,7 +104,7 @@ class Dataset:
 		batch_y[0, 0] = Y
 		k = self.k
 		kernel = self.movie[(t - 1):(t + 1), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
-		batch_x(0, :, :, :, :) = enrich_kernel(kernel)
+		batch_x[0, :, :, :, :] = enrich_kernel(kernel)
 
 		return batch_x, batch_y
 
@@ -155,6 +155,6 @@ class Dataset:
 			batch_y[i, 0] = Y
 			k = self.k
 			kernel = self.movie[(t - 1):(t + 1), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
-			batch_x(i, :, :, :, :) = enrich_kernel(kernel)
+			batch_x[i, :, :, :, :] = enrich_kernel(kernel)
 
 		return batch_x, batch_y
