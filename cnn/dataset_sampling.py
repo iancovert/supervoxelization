@@ -6,7 +6,7 @@ def enrich_kernel(kernel):
 	return kernel
 
 def transpose_kernel(kernel):
-	return np.transpose(kernel, (3, 0, 1, 2))
+	return np.transpose(kernel, (1, 2, 3, 0))
 
 class Dataset:
 	def __init__(self, indices_filename, raw_filename, kernel_size, perc_testing, raw_var_name = 'var', inds_var_name = 'inds'):
@@ -67,6 +67,11 @@ class Dataset:
 		# Kernel size
 		self.kernel_size = kernel_size
 		self.k = int((kernel_size - 1)/2)
+
+	''' This works
+		But I get warnings about using a non integer to index...
+		t = inds['t'][index]
+	'''
 
 	def next_single(self):
 		# Create empty tensors
