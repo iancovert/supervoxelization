@@ -1,6 +1,11 @@
-function copy = weighted_average_frames(var)
+function copy = weighted_average_frames(var, weights)
+
 	% Weights for weighted average
-	weights = [0.0015 0.0072 0.0025 0.0072 -0.0359 -0.0580 -0.1482 -0.1612 0.7797 -0.1612 -0.1482 -0.0580 -0.0359 0.0072 0.0025 0.0072 0.0015];
+	if (nargin < 2)
+		weights = bandpassWeights(1, 4.9, 16);
+	end
+
+	% Number of weights
 	n_weights = numel(weights);
 
 	% Ensure that frame stack is large enough
