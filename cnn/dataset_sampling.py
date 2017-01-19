@@ -6,14 +6,14 @@ def enrich_kernel(kernel):
 	return kernel
 
 class Dataset:
-	def __init__(self, indices_filename, raw_filename, kernel_size, perc_testing):
+	def __init__(self, indices_filename, raw_filename, kernel_size, perc_testing, raw_var_name = 'var', inds_var_name = 'inds'):
 		# Load indices of points to sample
 		indices_file = h5py.File(indices_filename, 'r')
 		
 		# Extract sets of indices
-		ones = indices_file['inds']['ones']
-		close_zeros = indices_file['inds']['close_zeros']
-		far_zeros = indices_file['inds']['far_zeros']
+		ones = indices_file[inds_var_name]['ones']
+		close_zeros = indices_file[inds_var_name]['close_zeros']
+		far_zeros = indices_file[inds_var_name]['far_zeros']
 
 		# Count number of ones, close zeros, far zeros
 		n_ones = ones['x'].shape[1]
@@ -59,7 +59,8 @@ class Dataset:
 
 		# Load movie
 		raw_file = h5py.File(raw_filename, 'r')
-		self.movie = raw_file['var']
+
+		self.movie = raw_file[raw_var_name]
 
 		# Kernel size
 		self.kernel_size = kernel_size
