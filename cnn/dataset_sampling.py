@@ -5,6 +5,9 @@ from indices_tools import indices_subset
 def enrich_kernel(kernel):
 	return kernel
 
+def transpose_kernel(kernel):
+	return np.transpose(kernel, (3, 0, 1, 2))
+
 class Dataset:
 	def __init__(self, indices_filename, raw_filename, kernel_size, perc_testing, raw_var_name = 'var', inds_var_name = 'inds'):
 		# Load indices of points to sample
@@ -104,7 +107,8 @@ class Dataset:
 		# Fill tensors
 		batch_y[0, 0] = Y
 		k = self.k
-		kernel = self.movie[(t - 1):(t + 1), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
+		kernel = self.movie[(t - 1):(t + 2), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
+		kernel = transpose_kernel(kernel)
 		batch_x[0, :, :, :, :] = enrich_kernel(kernel)
 
 		return batch_x, batch_y
@@ -155,7 +159,8 @@ class Dataset:
 			# Fill tensors
 			batch_y[i, 0] = Y
 			k = self.k
-			kernel = self.movie[(t - 1):(t + 1), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
+			kernel = self.movie[(t - 1):(t + 2), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
+			kernel = transpose_kernel(kernel)
 			batch_x[i, :, :, :, :] = enrich_kernel(kernel)
 
 		return batch_x, batch_y
