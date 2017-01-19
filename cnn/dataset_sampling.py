@@ -69,7 +69,7 @@ class Dataset:
 	def next_single(self):
 		# Create empty tensors
 		batch_x = np.zeros(
-			(1, self.patch_size, self.patch_size, self.patch_size, 3),
+			(1, self.kernel_size, self.kernel_size, self.kernel_size, 3),
 			dtype = np.float32)
 		batch_y = np.zeros(
 			(1, 1), 
@@ -112,7 +112,7 @@ class Dataset:
 	def next(self, is_testing = False, batch_size = 16):
 		# Create empty tensors
 		batch_x = np.zeros(
-			(batch_size, self.patch_size, self.patch_size, self.patch_size, 3),
+			(batch_size, self.kernel_size, self.kernel_size, self.kernel_size, 3),
 			dtype = np.float32)
 		batch_y = np.zeros(
 			(batch_size, 1), 
