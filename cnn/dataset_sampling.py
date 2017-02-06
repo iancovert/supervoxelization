@@ -68,11 +68,6 @@ class Dataset:
 		self.kernel_size = kernel_size
 		self.k = int((kernel_size - 1)/2)
 
-	''' This works
-		But I get warnings about using a non integer to index...
-		t = inds['t'][index]
-	'''
-
 	def next_single(self):
 		# Create empty tensors
 		batch_x = np.zeros(
