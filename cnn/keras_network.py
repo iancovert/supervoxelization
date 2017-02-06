@@ -13,10 +13,10 @@ from dataset_sampling import Dataset
 import datetime
 
 # Data locations, variable names
-indices_filename = '../data/sampling_indices.mat'
+indices_filename = '../data/sampling_inds_fourier.mat'
 indices_var_name = 'inds'
-raw_filename = '../data/frame_sample.mat'
-raw_var_name = 'sample'
+raw_filename = '../data/truncated_sample.mat'
+raw_var_name = 'var'
 
 # Network parameters
 LAYER_WIDTH = 16
