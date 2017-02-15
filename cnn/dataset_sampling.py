@@ -67,6 +67,7 @@ class Dataset:
 
 		# Load movie
 		raw_file = h5py.File(raw_filename, 'r')
+
 		self.movie = raw_file[raw_var_name]
 
 		# Kernel size
