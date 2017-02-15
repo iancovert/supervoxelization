@@ -64,9 +64,27 @@ def get_model():
 
 	x = LeakyReLU(alpha = 0.001)(x)
 
+	x = Convolution3D(nb_filter=100,
+		kernel_dim1=7,
+		kernel_dim2=7,
+		kernel_dim3=7,
+		init='he_normal', 
+		activation='sigmoid',
+		border_mode='valid',
+		name="dense0")(x)
+
+	x = Convolution3d(nb_filter=1,
+		kernel_dim1=1,
+		kernel_dim2=1,
+		kernel_dim3=1,
+		init='he_normal', 
+		activation='sigmoid',
+		border_mode='valid',
+		name="dense1")(x)
+
 	# TODO remove these next steps
 	# Turn it into a convolution with a kernel size that turns this into a single scalar
-	x = Flatten(name='main_flatten')(x)
+	'''x = Flatten(name='main_flatten')(x)
 
 	x = Dense(100, activation="linear", name="dense0")(x)
 
@@ -77,7 +95,7 @@ def get_model():
 	# With a new Theano function
 	# Try removing the sigmoid and see what happens
 	# Reduce order of magnitude of initial values of weights in first conv layer
-	x = Dense(1, activation="sigmoid", name="dense1")(x)
+	x = Dense(1, activation="sigmoid", name="dense1")(x)'''
 
 	model = Model(input=[main_input],output=x)
 
