@@ -23,7 +23,7 @@ def get_model():
 		kernel_dim1=5,
 		kernel_dim2=5,
 		kernel_dim3=5,
-		init='he_normal',
+		init='glorot_normal',
 		activation='linear',
 		border_mode='valid', 
 		name='layer0')(main_input)

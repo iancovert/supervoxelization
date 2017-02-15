@@ -1,5 +1,16 @@
+# Keras imports
+import keras
+from keras.models import Model
+from keras.layers import Input, Reshape, Dense, Activation, Dropout, Flatten, merge
+from keras.layers import LSTM, Convolution3D, Convolution2D, MaxPooling3D
+from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop, Adam
+from keras.layers.advanced_activations import LeakyReLU
+
 # Data imports
 from dataset_sampling import Dataset
+
+# Keras network model
+import keras_network as kn
 
 # Other imports
 import datetime
@@ -29,7 +40,7 @@ def model_filename(prefix = None):
 
 if __name__ == '__main__':
 	print('Getting model')
-	model = get_model()
+	model = kn.get_model()
 	optimizer = Adam(lr=.0001)
 
 	print('Compiling model')
