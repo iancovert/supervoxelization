@@ -24,8 +24,8 @@ raw_var_name = 'var'
 # Training parameters
 testing = 0.05
 NUM_EPOCHS = 10000
-NUM_BATCHES_PER_EPOCH = 1000
-TEST_EVERY = 200
+NUM_BATCHES_PER_EPOCH = 2000
+TEST_EVERY = 500
 SAVE_EVERY_TEST = 200
 
 # Output locations

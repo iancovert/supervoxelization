@@ -80,7 +80,7 @@ class Dataset:
 			(1, self.kernel_size, self.kernel_size, self.kernel_size, 3),
 			dtype = np.float32)
 		batch_y = np.zeros(
-			(1, 1), 
+			(1, 1, 1, 1, 1), 
 			dtype = np.float32)
 
 		# Select whether it's a one, close zero or far zero
@@ -110,7 +110,7 @@ class Dataset:
 		t = inds['t'][index]
 		
 		# Fill tensors
-		batch_y[0, 0] = Y
+		batch_y[0, 0, 0, 0, 0] = Y
 		k = self.k
 		kernel = self.movie[(t - 1):(t + 2), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
 		kernel = transpose_kernel(kernel)
@@ -124,7 +124,7 @@ class Dataset:
 			(batch_size, self.kernel_size, self.kernel_size, self.kernel_size, 3),
 			dtype = np.float32)
 		batch_y = np.zeros(
-			(batch_size, 1), 
+			(batch_size, 1, 1, 1, 1), 
 			dtype = np.float32)
 
 		# Determine whether subset should be taken from training or testing
@@ -162,7 +162,7 @@ class Dataset:
 			t = inds['t'][index]
 			
 			# Fill tensors
-			batch_y[i, 0] = Y
+			batch_y[i, 0, 0, 0, 0] = Y
 			k = self.k
 			kernel = self.movie[(t - 1):(t + 2), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
 			kernel = transpose_kernel(kernel)

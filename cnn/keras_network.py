@@ -17,7 +17,7 @@ def get_model():
 	# Perhaps by creating fake data
 
 	# TODO consider possibility that this field of view is either too large or too small
-	main_input = Input(shape=(23,23,23, 3), dtype='float32',name='main_input')
+	main_input = Input(shape=(None,None,None, 3), dtype='float32',name='main_input')
 
 	x = Convolution3D(nb_filter=LAYER_WIDTH,
 		kernel_dim1=5,
@@ -73,7 +73,7 @@ def get_model():
 		border_mode='valid',
 		name="dense0")(x)
 
-	x = Convolution3d(nb_filter=1,
+	x = Convolution3D(nb_filter=1,
 		kernel_dim1=1,
 		kernel_dim2=1,
 		kernel_dim3=1,
