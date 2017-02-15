@@ -1,3 +1,11 @@
+# Keras imports
+import keras
+from keras.models import Model
+from keras.layers import Input, Reshape, Dense, Activation, Dropout, Flatten, merge
+from keras.layers import LSTM, Convolution3D, Convolution2D, MaxPooling3D
+from keras.optimizers import SGD, Adadelta, Adagrad, RMSprop, Adam
+from keras.layers.advanced_activations import LeakyReLU
+
 # Data imports
 from dataset_sampling import Dataset
 
