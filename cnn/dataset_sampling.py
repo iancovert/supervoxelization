@@ -9,7 +9,7 @@ def transpose_kernel(kernel):
 	return np.transpose(kernel, (1, 2, 3, 0))
 
 class Dataset:
-	def __init__(self, indices_filename, raw_filename, kernel_size, perc_testing, raw_var_name = 'var', inds_var_name = 'inds'):
+	def __init__(self, indices_filename, raw_filename, kernel_size, perc_testing, raw_var_name = 'var', inds_var_name = 'inds', shrink_factor = 1):
 		# Load indices of points to sample
 		indices_file = h5py.File(indices_filename, 'r')
 		
@@ -19,9 +19,14 @@ class Dataset:
 		far_zeros = indices_file[inds_var_name]['far_zeros']
 
 		# Count number of ones, close zeros, far zeros
-		n_ones = ones['x'].shape[1]
-		n_close_zeros = close_zeros['x'].shape[1]
-		n_far_zeros = far_zeros['x'].shape[1]
+		if (shrink_factor < 1 and shrink_factor > 0):
+			n_ones = int(ones['x'].shape[1] * shrink_factor)
+			n_close_zeros = int(close_zeros['x'].shape[1] * shrink_factor)
+			n_far_zeros = int(far_zeros['x'].shape[1] * shrink_factor)
+		else:
+			n_ones = ones['x'].shape[1]
+			n_close_zeros = close_zeros['x'].shape[1]
+			n_far_zeros = far_zeros['x'].shape[1]
 
 		# Get subsets of indices for training and testing
 		ones_subset_testing, ones_subset_training = indices_subset(n_ones, perc_testing)
