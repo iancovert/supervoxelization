@@ -9,7 +9,7 @@ def transpose_kernel(kernel):
 	return np.transpose(kernel, (1, 2, 3, 0))
 
 class Dataset:
-	def __init__(self, indices_filename, raw_filename, kernel_size, perc_testing, raw_var_name = 'var', inds_var_name = 'inds', shrink_factor = 1):
+	def __init__(self, indices_filename, raw_filename, kernel_size, time_width, perc_testing, raw_var_name = 'var', inds_var_name = 'inds', shrink_factor = 1):
 		# Load indices of points to sample
 		indices_file = h5py.File(indices_filename, 'r')
 		
@@ -73,11 +73,13 @@ class Dataset:
 		# Kernel size
 		self.kernel_size = kernel_size
 		self.k = int((kernel_size - 1)/2)
+		self.time_width = time_width
+		self.t = int((time_width - 1)/2)
 
 	def next_single(self):
 		# Create empty tensors
 		batch_x = np.zeros(
-			(1, self.kernel_size, self.kernel_size, self.kernel_size, 3),
+			(1, self.kernel_size, self.kernel_size, self.kernel_size, self.time_width),
 			dtype = np.float32)
 		batch_y = np.zeros(
 			(1, 1, 1, 1, 1), 
@@ -112,7 +114,7 @@ class Dataset:
 		# Fill tensors
 		batch_y[0, 0, 0, 0, 0] = Y
 		k = self.k
-		kernel = self.movie[(t - 1):(t + 2), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
+		kernel = self.movie[(t - self.t):(t + self.t + 1), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
 		kernel = transpose_kernel(kernel)
 		batch_x[0, :, :, :, :] = enrich_kernel(kernel)
 
@@ -121,7 +123,7 @@ class Dataset:
 	def next(self, is_testing = False, batch_size = 16):
 		# Create empty tensors
 		batch_x = np.zeros(
-			(batch_size, self.kernel_size, self.kernel_size, self.kernel_size, 3),
+			(batch_size, self.kernel_size, self.kernel_size, self.kernel_size, self.time_width),
 			dtype = np.float32)
 		batch_y = np.zeros(
 			(batch_size, 1, 1, 1, 1), 
@@ -164,7 +166,7 @@ class Dataset:
 			# Fill tensors
 			batch_y[i, 0, 0, 0, 0] = Y
 			k = self.k
-			kernel = self.movie[(t - 1):(t + 2), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
+			kernel = self.movie[(t - self.t):(t + self.t + 1), (z - k):(z + k + 1), (y - k):(y + k + 1), (x - k):(x + k + 1)]
 			kernel = transpose_kernel(kernel)
 			batch_x[i, :, :, :, :] = enrich_kernel(kernel)
 

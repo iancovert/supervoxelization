@@ -9,7 +9,7 @@ from keras.layers.advanced_activations import LeakyReLU
 # Network parameters
 LAYER_WIDTH = 16
 
-def get_model():
+def get_model(time_width = 3):
 	# TODO make sure these in right order
 	# Extra dimension here might be causing numbers to explode
 	# Try changing inits to make all weights smaller by an order of magnitude
@@ -17,7 +17,7 @@ def get_model():
 	# Perhaps by creating fake data
 
 	# TODO consider possibility that this field of view is either too large or too small
-	main_input = Input(shape=(None,None,None, 3), dtype='float32',name='main_input')
+	main_input = Input(shape=(None,None,None, time_width), dtype='float32',name='main_input')
 
 	x = Convolution3D(nb_filter=LAYER_WIDTH,
 		kernel_dim1=5,
@@ -81,21 +81,6 @@ def get_model():
 		activation='sigmoid',
 		border_mode='valid',
 		name="dense1")(x)
-
-	# TODO remove these next steps
-	# Turn it into a convolution with a kernel size that turns this into a single scalar
-	'''x = Flatten(name='main_flatten')(x)
-
-	x = Dense(100, activation="linear", name="dense0")(x)
-
-	x = LeakyReLU(alpha = 0.001)(x)
-
-	# TODO sigmoid puts numbers in 0-1 range: my numbers must just be huge
-	# Could try to make functions that spit out values at an intermediate layer...
-	# With a new Theano function
-	# Try removing the sigmoid and see what happens
-	# Reduce order of magnitude of initial values of weights in first conv layer
-	x = Dense(1, activation="sigmoid", name="dense1")(x)'''
 
 	model = Model(input=[main_input],output=x)
 

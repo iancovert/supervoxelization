@@ -24,9 +24,13 @@ raw_var_name = 'var'
 # Training parameters
 testing = 0.05
 NUM_EPOCHS = 10000
-NUM_BATCHES_PER_EPOCH = 2000
+NUM_BATCHES_PER_EPOCH = 10000
 TEST_EVERY = 500
 SAVE_EVERY_TEST = 200
+
+# Model parameters
+kernel_size = 23
+time_width = 5
 
 # Output locations
 save_directory = 'trial_one'
@@ -40,14 +44,14 @@ def model_filename(prefix = None):
 
 if __name__ == '__main__':
 	print('Getting model')
-	model = kn.get_model()
+	model = kn.get_model(time_width = time_width)
 	optimizer = Adam(lr=.0001)
 
 	print('Compiling model')
 	model.compile(loss='mean_squared_error', optimizer = optimizer)
 
 	print('Getting dataset')
-	dataset = Dataset(indices_filename, raw_filename, 23, 0.05, inds_var_name = indices_var_name, raw_var_name = raw_var_name)
+	dataset = Dataset(indices_filename, raw_filename, kernel_size, time_width, 0.05, inds_var_name = indices_var_name, raw_var_name = raw_var_name)
 
 	print('Preparing filenames for saving results')
 	train_fname = save_directory + '/' + train_loss_file
@@ -70,9 +74,9 @@ if __name__ == '__main__':
 			loss = model.train_on_batch(batch_x, batch_y)
 
 			# Write loss to file
-			with open(train_fname,'a') as f:
+			'''with open(train_fname,'a') as f:
 				f.write(str(loss) + '\n')
-				f.close()
+				f.close()'''
 
 			# Test sometimes
 			if (count % TEST_EVERY == 0):
@@ -86,9 +90,9 @@ if __name__ == '__main__':
 					f.close()
 
 				# Save model periodically
-				if test_count % SAVE_EVERY_TEST == 0:
+				'''if test_count % SAVE_EVERY_TEST == 0:
 					fname = model_filename(prefix = 'periodic-' + str(test_count))
-					model.save(fname)
+					model.save(fname)'''
 
 				test_count = test_count + 1
 
