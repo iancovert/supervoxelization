@@ -1,4 +1,4 @@
-load('../data/frame_sample_weighted.mat');
+load('../data/frame_sample_fourier_filtered.mat');
 
 % Tuned through trial and error
 collab_f_param = 25;
@@ -14,4 +14,4 @@ frangi_options.FrangiC = 100;
 % Apply processing
 processed = denoise_and_filter(weighted, collab_f_param, frangi_options);
 
-save('../data/processed_sample.mat','-v7.3');
+save('../data/processed_sample_fourier.mat', 'processed', '-v7.3');

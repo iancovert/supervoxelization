@@ -1,4 +1,4 @@
-function inds = sampling_indices(fg, kernel_size)
+function inds = sampling_indices(fg, kernel_size, time_buffer)
 	% Create kernel for dilating image
 	[x y z] = ndgrid(-3:3);
 	se = strel(sqrt(x.^2 + y.^2 + x.^2) <= 3);
@@ -24,7 +24,7 @@ function inds = sampling_indices(fg, kernel_size)
 	% Find points in the valid region (usable by neural network)
 	all_points = 1:prod(size(fg));
 	[x y z t] = ind2sub(size(fg), all_points);
-	valid_inds = x > k & x <= (size(fg, 1) - k) & y > k & y <= (size(fg, 2) - k) & z > k & z <= (size(fg, 3) - k) & t > 1 & t < size(fg, 4);
+	valid_inds = x > k & x <= (size(fg, 1) - k) & y > k & y <= (size(fg, 2) - k) & z > k & z <= (size(fg, 3) - k) & t >= (1 + time_buffer) & t <= (size(fg, 4) - time_buffer);
 	valid_points = all_points(valid_inds);
 
 	% Compute indices of ones, close zeros and far zeros
