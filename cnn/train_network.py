@@ -9,7 +9,7 @@ from keras.layers.advanced_activations import LeakyReLU
 # Data imports
 from dataset_sampling import Dataset
 
-# Keras network model
+# Network model
 import keras_network as kn
 
 # Other imports
@@ -26,7 +26,7 @@ testing = 0.05
 NUM_EPOCHS = 10000
 NUM_BATCHES_PER_EPOCH = 10000
 TEST_EVERY = 500
-SAVE_EVERY_TEST = 200
+SAVE_LOSS_EVERY = 100
 
 # Model parameters
 kernel_size = 23
@@ -38,9 +38,19 @@ train_loss_file = 'keras_network_training.txt'
 test_loss_file = 'keras_network_testing.txt'
 
 def model_filename(prefix = None):
-  if (prefix):
-    return save_directory + '/' + prefix + '-{:%Y-%m-%d %H.%M.%S}'.format(datetime.datetime.now())
-  return save_directory + '/' + '{:%Y-%m-%d %H.%M.%S}'.format(datetime.datetime.now())
+	if (prefix):
+		return save_directory + '/' + prefix + '-{:%Y-%m-%d %H.%M.%S}'.format(datetime.datetime.now())
+	return save_directory + '/' + '{:%Y-%m-%d %H.%M.%S}'.format(datetime.datetime.now())
+
+def write_loss(loss, dest):
+	if dest == "train":
+		f = open(train_fname, 'a')
+	elif dest == "test":
+		f = open(test_fname, 'a')
+	else:
+		raise ValueError
+	f.write(str(loss) + '\n')
+	f.close()
 
 if __name__ == '__main__':
 	print('Getting model')
@@ -59,9 +69,6 @@ if __name__ == '__main__':
 
 	print('Starting training')
 	count = 0
-	test_count = 0
-
-	best_testing_loss = float('+inf')
 
 	for e in range(NUM_EPOCHS):
 		print('Epoch ', e)
@@ -73,28 +80,20 @@ if __name__ == '__main__':
 			# Train
 			loss = model.train_on_batch(batch_x, batch_y)
 
-			# Write loss to file
-			'''with open(train_fname,'a') as f:
-				f.write(str(loss) + '\n')
-				f.close()'''
+			# Write loss to file periodically
+			if (count % SAVE_LOSS_EVERY == 0):
+				write_loss(loss, "train")
 
 			# Test sometimes
 			if (count % TEST_EVERY == 0):
 				# Get testing data
 				x_test, y_test = dataset.next(is_testing = True)
+				
+				# Calculate test loss
 				test_loss = model.test_on_batch(x_test, y_test)
 
 				# Write loss to file
-				with open(test_fname,'a') as f:
-					f.write(str(test_loss) + '\n')
-					f.close()
-
-				# Save model periodically
-				'''if test_count % SAVE_EVERY_TEST == 0:
-					fname = model_filename(prefix = 'periodic-' + str(test_count))
-					model.save(fname)'''
-
-				test_count = test_count + 1
+				write_loss(test_loss, "test")
 
 			count = count + 1
 
