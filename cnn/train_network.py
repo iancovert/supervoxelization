@@ -14,6 +14,7 @@ import keras_network as kn
 
 # Other imports
 import datetime
+import os
 
 # Data locations, variable names
 indices_filename = '../data/sampling_inds_fourier.mat'
@@ -33,7 +34,7 @@ kernel_size = 23
 time_width = 5
 
 # Output locations
-save_directory = 'trial_one'
+save_directory = None
 train_loss_file = 'keras_network_training.txt'
 test_loss_file = 'keras_network_testing.txt'
 
@@ -43,20 +44,44 @@ def model_filename(prefix = None):
 	return save_directory + '/' + '{:%Y-%m-%d %H.%M.%S}'.format(datetime.datetime.now())
 
 def write_loss(loss, dest):
-	if dest == "train":
+	if dest == 'train':
 		f = open(train_fname, 'a')
-	elif dest == "test":
+	elif dest == 'test':
 		f = open(test_fname, 'a')
 	else:
+		print('Loss must be written to either training or testing')
 		raise ValueError
 	f.write(str(loss) + '\n')
 	f.close()
 
 if __name__ == '__main__':
+	print('Determining target directory')
+	save_directory = os.environ.get('TARGET')
+	if save_directory is None:
+		print('Must indicate target directory')
+		raise
+	else:
+		if os.path.isdir(save_directory):
+			if len(os.listdir(save_directory)) != 0:
+				print('Files exists in target directory')
+				raise ValueError
+		else:
+			print('Creating target directory ', save_directory)
+			os.makedirs(save_directory)
+
 	print('Getting model')
 	model = kn.get_model(time_width = time_width)
-	optimizer = Adam(lr=.0001)
 
+	print('Getting optimizer')
+	optimizer_type = os.environ.get('OPTIMIZER')
+	optimizer_param = os.environ.get('PARAMETER')
+	print('Using optimizer: ' + str(optimizer_type))
+	if optimizer_param is None:
+		optimizer = kn.get_optimizer(optimizer = optimizer_type)
+	else:
+		print('Using parameter: ' + str(optimizer_param))
+		optimizer = kn.get_optimizer(optimizer = optimizer_type, parameter = float(optimizer_param))
+	
 	print('Compiling model')
 	model.compile(loss='mean_squared_error', optimizer = optimizer)
 
@@ -84,7 +109,7 @@ if __name__ == '__main__':
 			if (count % SAVE_LOSS_EVERY == 0):
 				write_loss(loss, "train")
 
-			# Test sometimes
+			# Test periodically
 			if (count % TEST_EVERY == 0):
 				# Get testing data
 				x_test, y_test = dataset.next(is_testing = True)

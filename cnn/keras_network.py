@@ -85,3 +85,16 @@ def get_model(time_width = 3):
 	model = Model(input=[main_input],output=x)
 
 	return model
+
+def get_optimizer(optimizer = None, parameter = 0.001):
+
+	if optimizer is None:
+		return Adam(lr = 0.0001)
+	elif optimizer == 'Adam':
+		return Adam(lr = parameter)
+	elif optimizer == 'SGD':
+		return SGD(lr = parameter)
+	elif optimizer == 'ADAGRAD':
+		return Adagrad(lr = parameter)
+	else:
+		raise NameError('invalid optimizer')
