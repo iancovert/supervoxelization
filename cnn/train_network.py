@@ -63,10 +63,12 @@ if __name__ == '__main__':
 	else:
 		if os.path.isdir(save_directory):
 			if len(os.listdir(save_directory)) != 0:
-				print('Files exists in target directory')
+				print('Files exist in target directory')
 				raise ValueError
+			else:
+				print('Using target directory: ' + save_directory)
 		else:
-			print('Creating target directory ', save_directory)
+			print('Creating target directory: ' + save_directory)
 			os.makedirs(save_directory)
 
 	print('Getting model')
@@ -81,7 +83,7 @@ if __name__ == '__main__':
 	else:
 		print('Using parameter: ' + str(optimizer_param))
 		optimizer = kn.get_optimizer(optimizer = optimizer_type, parameter = float(optimizer_param))
-	
+
 	print('Compiling model')
 	model.compile(loss='mean_squared_error', optimizer = optimizer)
 
@@ -113,7 +115,7 @@ if __name__ == '__main__':
 			if (count % TEST_EVERY == 0):
 				# Get testing data
 				x_test, y_test = dataset.next(is_testing = True)
-				
+
 				# Calculate test loss
 				test_loss = model.test_on_batch(x_test, y_test)
 
